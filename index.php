@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <?php
+#include all environmental variables
+include("env.php");
+
+if(empty($API_KEY)){
+	echo "Please Request for API Key before start";
+	exit();
+}
+
 $ingredent_list = array();
 $food_image_url_list = array();
 function jwt_request($token) {
@@ -17,8 +25,7 @@ function jwt_request($token) {
 	return json_decode($result); // Return the received data
 }
 
-#$json_decoded = jwt_request("isURQ8LsyeglOFsKI8Fc3IWPD1mWiaXQe2YU9XpJD65hYvZhPkp9n95lfPExHAP1");
-$json_decoded = jwt_request("wCZSNTxwGUKyvIIHLGL5QDuVPA7nnJw08r41UItyydeaYNuCAItOlzq3tBl7edkm");
+$json_decoded = jwt_request($API_KEY);
 
 #get a list of ingredient items
 $ingredient_items = $json_decoded->items;
