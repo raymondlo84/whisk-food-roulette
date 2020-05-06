@@ -106,13 +106,15 @@ function run_roulette(engine) {
 		ingredients = ingredients + x[i].name + " ";
 	}
   }
+  var duration = 5000 + num_items*200;
+  console.log('timeout:'+duration);
   setTimeout(function(){
     if(engine == "ubereats"){
     	window.open('https://www.ubereats.com/search?q='+ingredients, '_self');
     }else if(engine == "grubhub"){
     	window.open('https://www.grubhub.com/search?orderMethod=delivery&locationMode=DELIVERY&facetSet=umamiV2&pageSize=20&hideHateos=true&searchMetrics=true&preciseLocation=true&facet=open_now%3Atrue&queryText='+ingredients, '_self');
     }
-  }, 7000);
+  }, duration);
 }
 </script>
 
