@@ -42,8 +42,9 @@ $ingredient_items = $json_decoded->items;
 
 </head>
 <body>
+<a href="https://whi.sk/UxAEl">
 <img src="whisk.png" height=30px /> 
-
+</a>
 <?php
 echo "<table><tr>";
 for ($i=0; $i < 3; $i++){
@@ -109,7 +110,7 @@ function run_roulette(engine) {
     if(engine == "ubereats"){
     	window.open('https://www.ubereats.com/search?q='+ingredients, '_self');
     }else if(engine == "grubhub"){
-    	window.open('https://www.grubhub.com/search?orderMethod=delivery&locationMode=DELIVERY&facetSet=umamiV2&pageSize=20&hideHateos=true&searchMetrics=true&queryText='+ingredients, '_self');
+    	window.open('https://www.grubhub.com/search?orderMethod=delivery&locationMode=DELIVERY&facetSet=umamiV2&pageSize=20&hideHateos=true&searchMetrics=true&preciseLocation=true&facet=open_now%3Atrue&queryText='+ingredients, '_self');
     }
   }, 7000);
 }
@@ -117,6 +118,6 @@ function run_roulette(engine) {
 
 <input type="image" onclick="onClickUberEats()" id="ubereats_button" src="https://www.greenbaglunch2go.com/wp-content/uploads/2019/06/button-ubereats.png" height=120px/>
 <input type="image" onclick="onClickGrubHub()" id="grubhub_button" src="http://pages.r.grubhub.com/rs/927-DYO-696/images/GHORDERLINKBUTTON.png" height=120px/>
-
+<span>Powered by <a href="http://www.whisk.com">Whisk.com</a></span>
 </body>
 </html>
