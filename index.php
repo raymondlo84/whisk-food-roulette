@@ -10,22 +10,19 @@ if(empty($API_KEY)){
 
 $ingredent_list = array();
 $food_image_url_list = array();
-function jwt_request($token) {
-	$ch = curl_init('https://graph.whisk.com/v1/106b865abf7985e4ead8a3cfd782e876385'); // Initialise cURL
-	$authorization = "Authorization: Bearer ".$token; // Prepare the authorisation token
-	
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization )); // Inject the token into the header
+function jwt_request_whisk_list($token, $list_id) {
+	$ch = curl_init('https://graph.whisk.com/v1/'.$list_id);
+	$authorization = "Authorization: Token ".$token; 
+	// Inject the token into the header
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', $authorization )); 
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_HTTPGET, true);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // This will follow any redirects
+	
 	$result = curl_exec($ch); // Execute the cURL statement
 	curl_close($ch); // Close the cURL connection
 	return json_decode($result); // Return the received data
 }
-
-$json_decoded = jwt_request($API_KEY);
+$json_decoded = jwt_request_whisk_list($API_KEY, '106b865abf7985e4ead8a3cfd782e876385');
+#print_r($json_decoded);
 
 #get a list of ingredient items
 $ingredient_items = $json_decoded->items;
